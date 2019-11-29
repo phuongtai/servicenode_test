@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.urls import path, include
 from django.conf.urls import url
-from rest_framework_swagger.views import get_swagger_view
+from rest_framework.schemas import get_schema_view
 
 from smart_contracts.urls import urlpatterns as contract_urls
 from partners.urls import urlpatterns as partner_urls
@@ -23,10 +23,16 @@ from django.views.generic import TemplateView
 
 
 urlpatterns = [
+    path('openapi', get_schema_view(
+        title="ServiceNode",
+        description="API for all things test",
+        version="1.0.0"
+    ), name='openapi-schema'),
+
     path('', include(contract_urls)),
     path('', include(partner_urls)),
     path('', TemplateView.as_view(
         template_name='swagger-ui.html',
-        extra_context={'schema_url':'openapi-schema'}
+        extra_context={'schema_url': 'openapi-schema'}
     ), name='swagger-ui')
 ]
