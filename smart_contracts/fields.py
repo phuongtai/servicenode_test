@@ -38,3 +38,5 @@ class ContentTypeField(serializers.Field):
             raise Exception('Your type: {} is not representation in database')
         return content_type
 
+    def to_representation(self, value):
+        return value.model
