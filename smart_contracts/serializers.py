@@ -8,7 +8,7 @@ from .fields import (
 
 
 class ContractSerializer(serializers.ModelSerializer):
-    content_type = ContentTypeField(max_length=256)
+    content_type = ContentTypeField()
     entity = PartnerObjectRelatedField(read_only=True, source='content_object')
 
     class Meta:

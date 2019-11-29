@@ -31,12 +31,10 @@ class SmartPartnerObjectRelatedField(PartnerObjectRelatedField):
         return serializer.data
 
 
-class ContentTypeField(serializers.CharField):
+class ContentTypeField(serializers.Field):
     def to_internal_value(self, data):
         content_type = ContentType.objects.get(model=data)
         if not content_type:
             raise Exception('Your type: {} is not representation in database')
         return content_type
 
-    def to_representation(self, value):
-        return super().to_representation(value)
