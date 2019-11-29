@@ -1,3 +1,4 @@
+from django.contrib.contenttypes.models import ContentType
 from rest_framework import serializers
 from .models import Manufacturer, Customer
 
@@ -38,3 +39,11 @@ class ReprManufacturerSerializer(serializers.ModelSerializer):
     class Meta:
         model = Manufacturer
         fields = ('partner', 'contact')
+
+
+class ContentTypeSerializer(serializers.ModelSerializer):
+    model = serializers.CharField(max_length=256, read_only=True)
+
+    class Meta:
+        model = ContentType
+        fields = ('model', )

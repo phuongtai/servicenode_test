@@ -2,7 +2,7 @@ from django.contrib.contenttypes.models import ContentType
 from rest_framework.viewsets import ModelViewSet
 from rest_framework.generics import ListAPIView
 from rest_framework.response import Response
-from .serializers import CustomerSerializer, ManufacturerSerializer
+from .serializers import CustomerSerializer, ManufacturerSerializer, ContentTypeSerializer
 from .models import Customer, Manufacturer
 
 
@@ -17,11 +17,10 @@ class ManufacturerViewset(ModelViewSet):
 
 
 class GetPartnerContenttype(ListAPIView):
+    serializer_class = ContentTypeSerializer
     queryset = ContentType.objects.all()
 
     def list(self, request, *args, **kwargs):
-        rs = []
         contenttypes = ContentType.objects.filter(app_label='partners')
-        for item in contenttypes:
-            rs.append(item.model)
-        return Response(data=rs)
+        sers = self.get_serializer(contenttypes, many=True)
+        return Response(data=sers.data)
