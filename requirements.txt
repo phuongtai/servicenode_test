@@ -1,3 +1,4 @@
+pyyaml
 gunicorn==20.0.4
 django-heroku
 django==2.1
