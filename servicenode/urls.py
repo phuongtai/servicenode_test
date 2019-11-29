@@ -19,11 +19,14 @@ from rest_framework_swagger.views import get_swagger_view
 
 from smart_contracts.urls import urlpatterns as contract_urls
 from partners.urls import urlpatterns as partner_urls
+from django.views.generic import TemplateView
 
-schema_view = get_swagger_view(title='ServiceNode API Test')
 
 urlpatterns = [
     path('', include(contract_urls)),
     path('', include(partner_urls)),
-    url(r'^$', schema_view)
+    path('', TemplateView.as_view(
+        template_name='swagger-ui.html',
+        extra_context={'schema_url':'openapi-schema'}
+    ), name='swagger-ui')
 ]
