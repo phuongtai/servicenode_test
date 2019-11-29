@@ -17,6 +17,8 @@ class ManufacturerViewset(ModelViewSet):
 
 
 class GetPartnerContenttype(ListAPIView):
+    queryset = ContentType.objects.all()
+
     def list(self, request, *args, **kwargs):
         rs = []
         contenttypes = ContentType.objects.filter(app_label='partners')
