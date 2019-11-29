@@ -19,7 +19,6 @@ from smart_contracts.urls import urlpatterns as contract_urls
 from partners.urls import urlpatterns as partner_urls
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
     path('', include(contract_urls)),
     path('', include(partner_urls))
 ]
