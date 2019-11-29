@@ -13,12 +13,17 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-from django.contrib import admin
 from django.urls import path, include
+from django.conf.urls import url
+from rest_framework_swagger.views import get_swagger_view
+
 from smart_contracts.urls import urlpatterns as contract_urls
 from partners.urls import urlpatterns as partner_urls
 
+schema_view = get_swagger_view(title='ServiceNode API Test')
+
 urlpatterns = [
     path('', include(contract_urls)),
-    path('', include(partner_urls))
+    path('', include(partner_urls)),
+    url(r'^$', schema_view)
 ]

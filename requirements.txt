@@ -2,3 +2,4 @@ gunicorn==20.0.4
 django-heroku
 django==2.1
 djangorestframework==3.10.3
+django-rest-swagger==2.2.0
