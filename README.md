@@ -1,4 +1,4 @@
-# servicenode_test
+# DJANGO API EXAMPLE
 ## APIs
 
 1. contract
