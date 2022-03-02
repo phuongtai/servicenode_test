@@ -1,6 +1,6 @@
 pyyaml
 gunicorn==20.0.4
 django-heroku
-django==4.0
+django>=4.0.2
 djangorestframework==3.11.2
 django-rest-swagger==2.2.0
