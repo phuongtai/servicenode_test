@@ -1,5 +1,5 @@
 pyyaml
-gunicorn==20.0.4
+gunicorn==22.0.0
 django-heroku
 django>=4.0.2
 djangorestframework==3.11.2
